@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import PrefsItem from './PrefsItem';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {storeUserPrefs} from '../actions/userActions';
 
 const preferences = ['prefs1', 'prefs2', 'prefs3', 'prefs4', 'prefs5']
 
-export default class Prefs extends Component {
+class Prefs extends Component {
   state = {
     'prefs1': false,
     'prefs2': false,
@@ -19,6 +22,7 @@ export default class Prefs extends Component {
   }
   _home = () => {
     this.props.navigation.navigate('Home')
+    this.props.storeUserPrefs(this.state)
   }
   render() {
     return (
@@ -68,3 +72,11 @@ const styles = StyleSheet.create({
     borderColor: '#606060',
   }
 });
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({
+    storeUserPrefs
+  }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(Prefs)

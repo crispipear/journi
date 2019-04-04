@@ -2,16 +2,21 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput,
   TouchableOpacity, Image} from 'react-native';
 import Portrait from '../assets/portrait.jpg';
+import {storeUserInfo} from '../actions/userActions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
-export default class SignUp extends Component {
+class SignUp extends Component {
   state = {
     username: '',
     password: '',
     email: ''
   }
   _prefs = () => {
-    this.props.navigation.navigate('Prefs')
+    this.props.navigation.navigate('Prefs');
+    this.props.storeUserInfo(this.state)
   }
+  
   render() {
     return (
       <View style={styles.container}>
@@ -89,3 +94,11 @@ const styles = StyleSheet.create({
     borderColor: '#606060',
   }
 });
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({
+    storeUserInfo
+  }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(SignUp)

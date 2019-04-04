@@ -1,4 +1,4 @@
-#journi - travel safety helper mobile app
+# journi - travel safety helper mobile app
 
 ## Description
 journi is a mobile app concept aimed at helping young solo travelers be more aware of their safety and provide accessible emergency support.

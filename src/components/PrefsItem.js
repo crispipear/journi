@@ -6,7 +6,12 @@ export default class Prefs extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>{this.props.name}</Text>
-        <Switch value={this.props.value} onValueChange={(value) => this.props.changeValue(value, this.props.name)}/>
+        <Switch 
+          value={this.props.value}
+          onValueChange={(value) => this.props.changeValue(value, this.props.name)}
+          thumbColor={'#606060'}
+          trackColor={{true: '#c4c4c4', false: '#c4c4c4'}}
+        />
       </View>
     );
   }
