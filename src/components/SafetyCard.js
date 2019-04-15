@@ -7,7 +7,7 @@ class SafetyCard extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{fontSize: 14, marginBottom: 15}}>SAFETY POCKET CARD</Text>
+        <Text style={{fontSize: 18, marginBottom: 15, fontWeight: '600', marginBottom: 20}}>SAFETY POCKET CARD</Text>
         <View style={styles.info}> 
           <Text style={styles.title}>YOU ARE STAYING AT</Text>
           <Text style={styles.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
@@ -37,16 +37,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30
   },
   info: {
-    marginBottom: 10
+    marginBottom: 15
   },
   title: {
-    fontSize: 11,
+    fontSize: 13,
     letterSpacing: 0.5,
     fontWeight: '600',
     marginBottom: 2.5
   },
   content: {
-    fontSize: 11,
+    fontSize: 12,
     color: '#777777'
   }
 });

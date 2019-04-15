@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableHighlight, ScrollView} from 'react-native';
 import Slider from "react-native-slider";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -27,16 +27,16 @@ class Settings extends Component {
     calcTime = min => {
         let result = ''
         if (min < 60){
-            result = min + ' minutes'
+            result = min + ' MINUTES'
         }else if (min >= 60){
             if (min < 120){
-                result = Math.floor(min/60) + ' hour'
+                result = Math.floor(min/60) + ' HOUR'
             }else{
-                result = Math.floor(min/60) + ' hours'
+                result = Math.floor(min/60) + ' HOURS'
             }
             
             if (min%60 !== 0){
-                result += ' ' + min%60 + ' minutes'
+                result += ' ' + min%60 + ' MINUTES'
             }
         }
         return result
@@ -49,13 +49,13 @@ class Settings extends Component {
     return (
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.settings}>
-            <Text style={styles.text}>CHECK-IN TIME: every {this.state.time}</Text>
+            <Text style={styles.text}>CHECK-IN TIME: EVERY {this.state.time}</Text>
             <Slider
             step={15}
             minimumValue={15}
             maximumValue={180}
             thumbTintColor={'#4f4f4f'}
-            thumbStyle={{width: 16, height: 16}}
+            thumbStyle={{width: 12, height: 12}}
             minimumTrackTintColor={'#7a7a7a'}
             maximumTrackTintColor={'#c4c4c4'}
             trackStyle={{height: 3}}
@@ -63,16 +63,19 @@ class Settings extends Component {
             value={this.state.curVal}
             />
             <View style={styles.emerg}>
-                <Text style={styles.text}>EMERGENCY CONTACTS</Text>
+                <Text style={styles.title}>EMERGENCY CONTACTS</Text>
                 <Contacts/>
+                <Message/>
             </View>
-            <Message/>
-            <Text style={styles.text}>By using this app you are giving permissions journi to 
-            access your location for safety purposes.</Text>            
+            <View style={styles.emerg}>
+                <Text style={styles.title}>PRIVATE POLICY</Text>
+                 <Text style={styles.text}>By using this app you are giving permissions journi to 
+                access your location for safety purposes.</Text>            
+            </View>
         </ScrollView>
-        <TouchableOpacity style={styles.confirm} onPress={this._confirm}>
+        <TouchableHighlight underlayColor="#a3a3a3" style={styles.confirm} onPress={this._confirm}>
             <Text style={{color: '#333333', fontWeight: '600', letterSpacing: 0.25}}>CONFIRM</Text>
-        </TouchableOpacity>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -81,7 +84,7 @@ class Settings extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f2f2f2'
+    backgroundColor: '#fbf7f1'
   },
   settings: {
     paddingHorizontal: 30,
@@ -98,7 +101,13 @@ const styles = StyleSheet.create({
       backgroundColor: '#d8d8d8'
   },
   text:{
-      fontWeight: '500'
+      fontSize: 13
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: '600',
+    letterSpacing:0.5,
+    marginBottom: 10
   },
   emerg:{
       marginVertical: 15

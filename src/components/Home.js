@@ -4,6 +4,9 @@ import Portrait from '../assets/portrait.jpg';
 import {connect} from 'react-redux';
 import SafetyCard from './SafetyCard';
 import Settings from './Settings';
+import CheckIn from './CheckIn';
+import {setCountdown} from '../actions/userActions';
+import {bindActionCreators} from 'redux';
 
 class Home extends Component {
   state = {
@@ -22,12 +25,19 @@ class Home extends Component {
     })
   }
 
+  componentDidMount(){
+    var d1 = new Date(),
+    d2 = new Date ( d1 );
+    d2.setMinutes ( d1.getMinutes() + 30 );
+    this.props.setCountdown(d2)
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.checkIn}>
-            <Text style={styles.text}>SAFETY CHECK-IN: {this.state.safetyCheckin ? 'ON' : 'OFF'}</Text>
+            <Text style={styles.text}>TIMED CHECK-IN: {this.state.safetyCheckin ? 'ON' : 'OFF'}</Text>
             <Switch 
                 value={this.state.safetyCheckin} 
                 onValueChange={this._safetyCheckin}
@@ -37,14 +47,9 @@ class Home extends Component {
           </View>
           <Image style={styles.portrait} source={Portrait}/> 
           <Text style={styles.name}>{this.props.username}</Text>
-          {
-            this.state.card != 'settings' &&
-            <TouchableOpacity style={styles.button} onPress={() => this.setCard('settings')}>
-              <Text style={{fontSize: 12}}>CHECK-IN SETTINGS</Text>
-            </TouchableOpacity>
-          }
+          <CheckIn card={this.state.card} setCard={this.setCard}/>
         </View>
-        <View style={[styles.card, this.state.card == 'settings' && {flex: 1.75}, this.state.card == 'safetyCard' && {flex: 1.15}]}>
+        <View style={[styles.card, this.state.card == 'settings' && {flex: 2.25}, this.state.card == 'safetyCard' && {flex: 1.15}]}>
           {
             this.state.card == 'settings' ?
             <Settings setCard={this.setCard}/>
@@ -63,18 +68,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  text: {
+    fontSize: 13,
+    fontWeight: '500'
+  },
   header:{
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#fbf7f1',
     alignItems: 'center',
     paddingTop: 30,
     paddingHorizontal: 30
   },
   portrait:{
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
     marginBottom: 20
   },
   checkIn:{
@@ -87,24 +96,22 @@ const styles = StyleSheet.create({
   name: {
     textAlign: 'center',
     width: '45%',
-    fontSize: 22,
-    letterSpacing: 1.25,
+    fontSize: 21,
+    letterSpacing: 0.5,
     fontWeight: '700'
-  },
-  button: {
-    borderWidth: 1,
-    marginTop: 15,
-    width: '65%',
-    height: 35,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: '#606060',
   }
 });
 
 
 const mapStateToProps = state => ({
-  username: state.user.username 
+  username: state.user.username,
+  checkInTime: state.user.checkInTime
 })
 
-export default connect(mapStateToProps, null)(Home)
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({
+    setCountdown
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

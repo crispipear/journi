@@ -6,11 +6,11 @@ import Portrait3 from '../../assets/portrait3.jpg';
 const contacts = [
     {
         img: Portrait2,
-        name: 'Yin'
+        name: 'YIN YIN'
     },
     {
         img: Portrait3,
-        name: 'Su'
+        name: 'SU LI'
     },
 ]
 
@@ -29,9 +29,9 @@ export default class Contacts extends Component {
             }
             <View style={styles.block}>
                 <TouchableOpacity style={styles.add}>
-                    <Text style={{fontSize: 40, color: '#a5a5a5', marginTop: -2.5}}>+</Text>
+                    <Text style={{fontSize: 30, color: '#a5a5a5', marginTop: -2.5}}>+</Text>
                 </TouchableOpacity>
-                <Text style={styles.blockText}>New</Text>
+                <Text style={styles.blockText}>NEW</Text>
             </View>
         </View>
       </View>
@@ -48,21 +48,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   portrait:{
-    width: 70,
-    height: 70,
-    borderRadius: 35
+    width: 60,
+    height: 60,
+    borderRadius: 30
   },
   add: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
-    backgroundColor: '#e0e0e0',
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    borderColor: '#828282',
+    borderWidth: 1.5,
     justifyContent: 'center',
     alignItems: 'center'
   },
   blockText:{
-    marginTop: 5,
-    textAlign: 'center'
+    marginTop: 10,
+    fontSize: 13,
+    textAlign: 'center',
+    fontWeight: '600',
+    letterSpacing: 0.25
   },
   block: {
       flexDirection: 'column',

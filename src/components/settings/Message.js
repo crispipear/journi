@@ -32,21 +32,17 @@ class Message extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f2f2f2',
-    marginBottom: 25
   },
   input: {
       width: '100%',
-      paddingTop: 20,
+      paddingTop: 15,
       minHeight: 100,
-      padding: 25,
+      padding: 15,
       alignItems:'flex-start',
       justifyContent: 'flex-start',
-      backgroundColor: '#ededed',
-      shadowColor: "#000", 
-      shadowOffset: { width: 0, height: 2, }, 
-      shadowOpacity: 0.25, 
-      shadowRadius: 5, 
+      borderColor: '#828282',
+      borderWidth: 1,
+      fontSize: 13
   }
 });
 

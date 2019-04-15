@@ -1,4 +1,5 @@
-import {STORE_USER_INFO, STORE_USER_PREFS, UPDATE_CHECKIN_TIME, UPDATE_MESSAGE} from '../actions/userActions';
+import {STORE_USER_INFO, STORE_USER_PREFS, 
+    UPDATE_CHECKIN_TIME, UPDATE_MESSAGE, SET_COUNT_DOWN} from '../actions/userActions';
 
 const initState = {
     username: 'Angela Birchman',
@@ -6,6 +7,7 @@ const initState = {
     email: '',
     prefs: {},
     checkInTime: 45,
+    countDown: {},
     message: "Hey, I have not checked in with my journi app, if I don't reply to your phone call please help me contact the local emergency."
 }
 
@@ -32,6 +34,11 @@ export default function(state=initState, action){
             return{
                 ...state,
                 message: action.payload
+            }
+        case SET_COUNT_DOWN:
+            return{
+                ...state,
+                countDown: action.payload
             }
         default:
             return state

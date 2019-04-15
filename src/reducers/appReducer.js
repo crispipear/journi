@@ -1,4 +1,4 @@
-import {STORE_CITIES_DATA} from '../actions/dataActions';
+import {STORE_CITIES_DATA} from '../actions/appActions';
 
 const initState = {
     citiesInfo: []

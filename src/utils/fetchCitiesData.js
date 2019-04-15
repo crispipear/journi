@@ -1,5 +1,5 @@
 import store from '../store';
-import {storeCitiesData} from '../actions/dataActions';
+import {storeCitiesData} from '../actions/appActions';
 
 export const fetchData = () => {
     let req = new XMLHttpRequest();

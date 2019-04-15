@@ -7,6 +7,7 @@ export default class Prefs extends Component {
       <View style={styles.container}>
         <Text style={styles.text}>{this.props.name}</Text>
         <Switch 
+          style={{transform: [{scaleX: 0.5}, {scaleY: 0.5}]}}
           value={this.props.value}
           onValueChange={(value) => this.props.changeValue(value, this.props.name)}
           thumbColor={'#606060'}
