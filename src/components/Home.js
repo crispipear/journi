@@ -10,7 +10,7 @@ import {bindActionCreators} from 'redux';
 
 class Home extends Component {
   state = {
-    safetyCheckin: false,
+    safetyCheckin: true,
     card: 'safetyCard'
   }
   _safetyCheckin = value => {
