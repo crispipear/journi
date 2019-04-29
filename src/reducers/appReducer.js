@@ -1,8 +1,9 @@
-import {STORE_CITIES_DATA, STORE_TRIPS_DATA} from '../actions/appActions';
+import {STORE_CITIES_DATA, STORE_TRIPS_DATA, UPDATE_TRIP_INFO} from '../actions/appActions';
 
 const initState = {
     citiesInfo: [],
-    trips: []
+    trips: [],
+    tripInfo: {}
 }
 
 export default function(state=initState, action){
@@ -15,7 +16,12 @@ export default function(state=initState, action){
         case STORE_TRIPS_DATA:
             return{
                 ...state,
-                trips: JSON.parse(action.payload)
+                trips: action.payload
+            }
+        case UPDATE_TRIP_INFO:
+            return{
+                ...state,
+                tripInfo: action.payload
             }
         default:
             return state

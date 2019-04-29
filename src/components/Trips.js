@@ -3,14 +3,21 @@ import { StyleSheet, View, Text, ImageBackground, TouchableOpacity, ScrollView} 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as TripsManager from '../utils/tripsManager';
+import {updateTripInfo} from '../actions/appActions';
 
 class Trips extends Component {
     componentDidMount(){
         TripsManager.getTrips()
+        // TripsManager.clearTrips()
     }
     newTrip = () => {
         this.props.navigation.navigate('NewTrip')
     }
+    tripInfo = trip => {
+        this.props.navigation.navigate('TripInfo')
+        this.props.updateTripInfo(trip)
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -27,11 +34,13 @@ class Trips extends Component {
                     <ScrollView>
                      {
                         this.props.trips.map((trip, key)=>
-                            <ImageBackground key={key} source={{uri: trip.photo}} style={styles.block}>
+                        <TouchableOpacity key={key} onPress={() => this.tripInfo(trip)}>
+                            <ImageBackground source={{uri: trip.photo}} style={styles.block}>
                                 <Text style={styles.cityText}>{trip.city}</Text>
                                 <Text style={styles.dateText}>{trip.startDate} - {trip.endDate}</Text>
                                 <View style={styles.overlay}/>
                             </ImageBackground>
+                        </TouchableOpacity>
                         )
                      }
                     </ScrollView>
@@ -59,12 +68,12 @@ const styles = StyleSheet.create({
         letterSpacing: 0.75
     },
     cityText: {
-        fontSize: 40,
+        fontSize: 38,
         color: 'white',
         fontWeight: 'bold',
         textTransform: 'uppercase',
         marginBottom: 10,
-        letterSpacing: 2,
+        letterSpacing: 2.5,
         zIndex: 2,
     },
     dateText: {
@@ -87,13 +96,15 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgba(65, 75, 107, 0.35)',
+        backgroundColor: 'rgba(65, 75, 107, 0.4)',
         zIndex: 0
     }
 })
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({}, dispatch)
+    return bindActionCreators({
+        updateTripInfo
+    }, dispatch)
 }
 function mapStateToProps(state) {
     return {
