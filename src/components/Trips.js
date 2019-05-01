@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ImageBackground, TouchableOpacity, ScrollView} from 'react-native'
+import { StyleSheet, View, Text, ImageBackground, TouchableOpacity, ScrollView, Image} from 'react-native'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as TripsManager from '../utils/tripsManager';
 import {updateTripInfo} from '../actions/appActions';
+import ICON_HOME from '../assets/icons/home.png';
 
 class Trips extends Component {
     componentDidMount(){
@@ -21,6 +22,11 @@ class Trips extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <View style={styles.nav}>
+                    <TouchableOpacity style={styles.iconContainer} onPress={() => this.props.navigation.navigate('Home')}>
+                        <Image source={ICON_HOME} style={styles.image}/>
+                    </TouchableOpacity>
+                </View>
                 <ImageBackground source={require("../assets/tripsHeader.png")} 
                                  style={[styles.block, this.props.trips.length == 0 && {height: '100%'}]}
                 >
@@ -98,7 +104,23 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: 'rgba(65, 75, 107, 0.4)',
         zIndex: 0
-    }
+    },
+    nav: {
+        position: 'absolute',
+        bottom: 0,
+        height: 60,
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        zIndex: 10
+      },
+      image: {
+        width: 30,
+        height: 30,
+        marginHorizontal: 30
+      }
 })
 
 function mapDispatchToProps(dispatch) {

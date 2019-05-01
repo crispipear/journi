@@ -7,6 +7,8 @@ import Settings from './Settings';
 import CheckIn from './CheckIn';
 import {setCountdown} from '../actions/userActions';
 import {bindActionCreators} from 'redux';
+import ICON_TRIP from '../assets/icons/trip.png';
+import ICON_MAP from '../assets/icons/map.png';
 
 class Home extends Component {
   state = {
@@ -31,10 +33,21 @@ class Home extends Component {
     d2.setMinutes ( d1.getMinutes() + 30 );
     this.props.setCountdown(d2)
   }
+  nav = loc => {
+    this.props.navigation.navigate(loc)
+  }
 
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.nav}>
+          <TouchableOpacity style={styles.iconContainer} onPress={() => this.nav('Trips')}>
+            <Image source={ICON_TRIP} style={styles.image}/>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.iconContainer} onPress={() => this.nav('Map')}>
+            <Image source={ICON_MAP} style={styles.image}/>
+          </TouchableOpacity>
+        </View>
         <View style={styles.header}>
           <View style={styles.checkIn}>
             <Text style={styles.text}>TIMED CHECK-IN: {this.state.safetyCheckin ? 'ON' : 'OFF'}</Text>
@@ -70,7 +83,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 13,
-    fontWeight: '500'
+    fontWeight: '500',
+    color: '#414b6b'
   },
   header:{
     flex: 1,
@@ -95,10 +109,27 @@ const styles = StyleSheet.create({
   },
   name: {
     textAlign: 'center',
+    color: '#414b6b',    
     width: '45%',
     fontSize: 21,
     letterSpacing: 0.5,
     fontWeight: '700'
+  },
+  nav: {
+    position: 'absolute',
+    bottom: 0,
+    height: 60,
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    zIndex: 10
+  },
+  image: {
+    width: 30,
+    height: 30,
+    marginHorizontal: 30
   }
 });
 

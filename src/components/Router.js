@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import {Animated, Easing} from 'react-native';
-import {createStackNavigator, createAppContainer, NavigationActions} from 'react-navigation';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
 
 import HomeScreen from './Home';
 import AboutScreen from './About';

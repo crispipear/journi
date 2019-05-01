@@ -7,23 +7,22 @@ class SafetyCard extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{fontSize: 18, marginBottom: 15, fontWeight: '600', marginBottom: 20}}>SAFETY POCKET CARD</Text>
+        <Text style={{fontSize: 18, marginBottom: 15, fontWeight: '600', marginBottom: 20, color: '#414b6b'}}>SAFETY POCKET CARD</Text>
         <View style={styles.info}> 
           <Text style={styles.title}>YOU ARE STAYING AT</Text>
-          <Text style={styles.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+          <Text style={styles.content}>213 rue Saint Honroe, 7500 Paris, France</Text>
         </View>
         <View style={styles.info}> 
           <Text style={styles.title}>REAL-TIME LOCATION</Text>
-          <Text style={styles.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+          <Text style={styles.content}>308 rue Saint Honroe, 7500 Paris, France</Text>
         </View>
         <View style={styles.info}> 
           <Text style={styles.title}>NEAR-BY LANDMARKS</Text>
-          <Text style={styles.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit</Text>
+          <Text style={styles.content}>Le Relais Hotel</Text>
         </View>
         <View style={styles.info}> 
           <Text style={styles.title}>EMERGENCIES INFO</Text>
-          <Text style={styles.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Text>
+          <Text style={styles.content}>incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Text>
         </View>
       </View>
     );
@@ -43,11 +42,13 @@ const styles = StyleSheet.create({
     fontSize: 13,
     letterSpacing: 0.5,
     fontWeight: '600',
-    marginBottom: 2.5
+    marginBottom: 2.5,
+    color: '#414b6b', 
   },
   content: {
     fontSize: 12,
-    color: '#777777'
+    color: '#414b6b',
+    opacity: 0.75
   }
 });
 
