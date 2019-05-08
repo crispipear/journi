@@ -27,16 +27,16 @@ class Trips extends Component {
                         <Image source={ICON_HOME} style={styles.image}/>
                     </TouchableOpacity>
                 </View>
-                <ImageBackground source={require("../assets/tripsHeader.png")} 
-                                 style={[styles.block, this.props.trips.length == 0 && {height: '100%'}]}
-                >
-                    <Text style={styles.text}>Whereto, {this.props.username.split(" ").shift()}?</Text>    
-                    <TouchableOpacity style={styles.button} onPress={this.newTrip}>
-                        <Text style={styles.buttonText}>CREATE A TRIP</Text>    
-                    </TouchableOpacity>            
-                </ImageBackground>
+                    <ImageBackground source={require("../assets/tripsHeader.png")} 
+                    style={[styles.block, this.props.trips.length == 0 && {height: '100%'}]}
+                    >
+                        <Text style={styles.text}>Whereto, {this.props.username.split(" ").shift()}?</Text>    
+                        <TouchableOpacity style={styles.button} onPress={this.newTrip}>
+                            <Text style={styles.buttonText}>CREATE A TRIP</Text>    
+                        </TouchableOpacity>            
+                    </ImageBackground>
                 {
-                    this.props.trips.length > 0 &&
+                   (this.props.trips && this.props.trips.length > 0) &&
                     <ScrollView>
                      {
                         this.props.trips.map((trip, key)=>

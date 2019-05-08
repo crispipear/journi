@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image, TouchableHighlight, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
 import Slider from "react-native-slider";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -54,9 +54,9 @@ class Settings extends Component {
             step={15}
             minimumValue={15}
             maximumValue={180}
-            thumbTintColor={'#4f4f4f'}
+            thumbTintColor={'#414b6b'}
             thumbStyle={{width: 12, height: 12}}
-            minimumTrackTintColor={'#7a7a7a'}
+            minimumTrackTintColor={'#414b6b'}
             maximumTrackTintColor={'#c4c4c4'}
             trackStyle={{height: 3}}
             onValueChange={this.handleChange}
@@ -72,10 +72,10 @@ class Settings extends Component {
                  <Text style={styles.text}>By using this app you are giving permissions journi to 
                 access your location for safety purposes.</Text>            
             </View>
+            <TouchableOpacity style={styles.confirm} onPress={this._confirm}>
+                <Text style={{color: '#414b6b', fontWeight: '600', letterSpacing: 0.25}}>CONFIRM</Text>
+            </TouchableOpacity>
         </ScrollView>
-        <TouchableHighlight underlayColor="#a3a3a3" style={styles.confirm} onPress={this._confirm}>
-            <Text style={{color: '#333333', fontWeight: '600', letterSpacing: 0.25}}>CONFIRM</Text>
-        </TouchableHighlight>
       </View>
     );
   }
@@ -92,18 +92,19 @@ const styles = StyleSheet.create({
     paddingBottom: 100
   },
   confirm: {
-      bottom: 0,
-      position: 'absolute',
+      marginTop: 10,
       justifyContent: 'center',
       alignItems: 'center',
-      height: 60,
-      width: '100%',
-      backgroundColor: '#d8d8d8'
+      height: 40,
+      borderColor: '#414b6b',
+      borderWidth: 1,
   },
   text:{
-      fontSize: 13
+      fontSize: 13,
+      color: '#414b6b'
   },
   title: {
+    color: '#414b6b',
     fontSize: 18,
     fontWeight: '600',
     letterSpacing:0.5,

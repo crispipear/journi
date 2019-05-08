@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    borderColor: '#828282',
+    borderColor: '#414b6b',
     borderWidth: 1.5,
     justifyContent: 'center',
     alignItems: 'center'
@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
     fontSize: 13,
     textAlign: 'center',
     fontWeight: '600',
-    letterSpacing: 0.25
+    letterSpacing: 0.25,
+    color: '#414b6b'
   },
   block: {
       flexDirection: 'column',

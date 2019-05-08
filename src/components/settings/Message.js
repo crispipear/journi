@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
       padding: 15,
       alignItems:'flex-start',
       justifyContent: 'flex-start',
-      borderColor: '#828282',
+      borderColor: '#414b6b',
       borderWidth: 1,
       fontSize: 13
   }

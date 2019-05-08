@@ -46,7 +46,7 @@ class TripInfo extends Component {
                     <Text style={styles.headerText}>Things you should know traveling to {this.props.trip.city}</Text>
                     {
                         CITY_INFO.map((info, key) => 
-                            <View style={styles.block}>
+                            <View key={key} style={styles.block}>
                                 <Text style={styles.blockTitle}>{info.title}</Text>
                                 <Text style={styles.blockContent}>{info.content}</Text>
                             </View>

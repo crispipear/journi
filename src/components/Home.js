@@ -40,7 +40,9 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.nav}>
+        {
+          this.state.card !== 'settings' &&
+          <View style={styles.nav}>
           <TouchableOpacity style={styles.iconContainer} onPress={() => this.nav('Trips')}>
             <Image source={ICON_TRIP} style={styles.image}/>
           </TouchableOpacity>
@@ -48,6 +50,7 @@ class Home extends Component {
             <Image source={ICON_MAP} style={styles.image}/>
           </TouchableOpacity>
         </View>
+        }
         <View style={styles.header}>
           <View style={styles.checkIn}>
             <Text style={styles.text}>TIMED CHECK-IN: {this.state.safetyCheckin ? 'ON' : 'OFF'}</Text>
