@@ -4,7 +4,11 @@ import * as AS from './asyncStorage';
 
 export const getTrips = async () => {
   const trips = await AS.get('trips')
-  store.dispatch(storeTripsData(JSON.parse(trips)))
+  if (trips){
+    store.dispatch(storeTripsData(JSON.parse(trips)))
+  }else{
+    store.dispatch(storeTripsData([]))
+  }
 }
 
 export const addTrip = trip => {
